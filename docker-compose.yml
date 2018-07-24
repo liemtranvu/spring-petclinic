@@ -1,9 +1,14 @@
-mysql:
-  image: mysql:5.7
+bamboo:
+  image: cptactionhank/atlassian-bamboo
   ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_ROOT_PASSWORD=petclinic
-    - MYSQL_DATABASE=petclinic
+    - "8085:8085"
   volumes:
-    - "./conf.d:/etc/mysql/conf.d:ro"
+    - "./docker/bamboo:/var/atlassian/bamboo"
+
+aut:
+  build: ./dockerFiles/oracle-java8
+  container_name: petclinic-aut
+  ports:
+    - "8080:8080"
+  volumes:
+    - "./docker/automation:/data"
