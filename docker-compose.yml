@@ -1,14 +1,19 @@
-bamboo:
-  image: cptactionhank/atlassian-bamboo
-  ports:
-    - "8085:8085"
-  volumes:
-    - "./docker/bamboo:/var/atlassian/bamboo"
+version: '2'
+services:
+  aut:
+    build: ./dockerFiles/oracle-java8
+    container_name: petclinic-aut
+    ports:
+      - "8080:8080"
+      - "9022:22"
+    volumes:
+      - "./docker/automation:/data"
 
-aut:
-  build: ./dockerFiles/oracle-java8
-  container_name: petclinic-aut
-  ports:
-    - "8080:8080"
-  volumes:
-    - "./docker/automation:/data"
+  bamboo:
+    image: cptactionhank/atlassian-bamboo
+    ports:
+      - "8085:8085"
+    volumes:
+      - "./docker/bamboo:/var/atlassian/bamboo"
+    links:
+      - aut
