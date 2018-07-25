@@ -20,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author Colin But
  */
+
 @RunWith(SpringRunner.class)
 // Waiting https://github.com/spring-projects/spring-boot/issues/5574
 @Ignore
