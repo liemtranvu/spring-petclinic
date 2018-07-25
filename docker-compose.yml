@@ -16,4 +16,4 @@ services:
     volumes:
       - "./docker/bamboo:/var/atlassian/bamboo"
     links:
-      - aut
+      - aut:aut
